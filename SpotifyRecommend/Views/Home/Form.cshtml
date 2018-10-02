@@ -1,0 +1,55 @@
+﻿@using SpotifyRecommend.SpotifyService.ResponseObjects
+@model SpotifyRecommend.SpotifyService.RequestObjects.RecommendationRequest
+
+<h4>Välj dina preferenser</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form id="form">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="col-md-6 px-0">
+                        <label for="CategoryIDs">Välj kategori</label>
+                        <select multiple class="form-control form-control-lg" size="10" name="SeedCategories" id="Categories">
+                            @foreach (var item in (List<Category>)ViewData["AvailableCategories"])
+                            {
+                                <option value="@item.Id">@item.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div id="category-playlists" class="col-md-6">
+                        @Html.Partial("CategoryPlaylists", (List<Playlist>)ViewData["CategoriesPlaylists"])
+                    </div>
+                </div>
+            </div>
+
+            @*<label for="TargetTempo">Tempo</label>
+                <div class="form-group range range-success">
+                    <input type="range" id="TargetTempo" name="TargetTempo" min="60" max="220" value="@Model.TargetTempo" onchange="targetTempo.value=value">
+                    <output id="targetTempo">@Model.TargetTempo</output>
+                </div>*@
+
+            @*<label for="genre-selection" class="col-form-label-lg">Välj genres</label>
+                <div class="form-group">
+                    <select multiple class="form-control form-control-lg" name="SeedGenres" id="SeedGenres">
+                        @foreach (var genre in (List<string>)ViewData["AvailableGenres"])
+                        {
+                            <option value="@genre">@genre</option>
+                        }
+                    </select>
+                </div>*@
+            <div class="col-md-6">
+                <label for="MinDanceAbility">Dansvänlighet</label>
+                <div class="form-group range range-success">
+                    <input type="range" id="MinDanceAbility" name="MinDanceAbility" min="1" max="100" value="@Model.MinDanceAbility" onchange="danceability.value=value">
+                    <output id="danceability">@Model.MinDanceAbility</output>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <button class="btn btn-default" id="recommend">Få rekommendationer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

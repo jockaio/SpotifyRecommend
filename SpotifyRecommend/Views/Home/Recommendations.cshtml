@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SpotifyRecommend.SpotifyService.ResponseObjects.Track>
+<div class="tracks-listing recommendations">
+    <div class="brand">
+        Har du hört dessa?
+        <i id="reco-icon" class="fa fas fa-headphones"></i>
+    </div>
+    <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#tracks-list-content"></i>
+
+    <div class="tracks-list">
+        @*<p id="error">Kunde inte hitta några låtar.</p>*@
+        @if (Model != null && Model.Count() > 0)
+        {
+            <ul id="tracks-list-content" class="tracks-list-content">
+
+                @foreach (var item in Model.Take(10))
+                {
+                    string artists = "";
+                    foreach (var artist in item.Artists)
+                    {
+                        artists += artist.Name + ", ";
+                    }
+                    artists = artists.Substring(0, artists.Length - 2);
+                    <li>
+                        <a href="@item.ExternalUrls.Spotify" target="_blank">
+                            <img src="@item.Album.Images.First().Url " alt="@item.Album.Name" /> @artists
+                            <p>@item.Name</p>
+                        </a>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

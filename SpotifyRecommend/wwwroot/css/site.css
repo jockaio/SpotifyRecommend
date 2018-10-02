@@ -1,0 +1,280 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: black;
+    font-family: 'Archivo Black', sans-serif;
+    color: white;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    color: white;
+    font-size: large;
+}
+
+.top-text {
+    text-align: center;
+}
+
+    .top-text p {
+        font-size: 45px;
+    }
+
+img.logo {
+    width: 80px;
+    height: auto;
+}
+
+.button {
+    -moz-box-shadow: -1px 1px 0px 0px #3dc21b;
+    -webkit-box-shadow: -1px 1px 0px 0px #3dc21b;
+    box-shadow: -1px 1px 0px 0px #3dc21b;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #6acc84), color-stop(1, #78a85e));
+    background: -moz-linear-gradient(top, #6acc84 5%, #78a85e 100%);
+    background: -webkit-linear-gradient(top, #6acc84 5%, #78a85e 100%);
+    background: -o-linear-gradient(top, #6acc84 5%, #78a85e 100%);
+    background: -ms-linear-gradient(top, #6acc84 5%, #78a85e 100%);
+    background: linear-gradient(to bottom, #6acc84 5%, #78a85e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6acc84', endColorstr='#78a85e',GradientType=0);
+    background-color: #6acc84;
+    -moz-border-radius: 30px;
+    -webkit-border-radius: 30px;
+    border-radius: 30px;
+    border: 2px solid #18ab29;
+    display: inline-block;
+    cursor: pointer;
+    color: #ffffff;
+    font-family: Verdana;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+    .button:hover {
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #78a85e), color-stop(1, #6acc84));
+        background: -moz-linear-gradient(top, #78a85e 5%, #6acc84 100%);
+        background: -webkit-linear-gradient(top, #78a85e 5%, #6acc84 100%);
+        background: -o-linear-gradient(top, #78a85e 5%, #6acc84 100%);
+        background: -ms-linear-gradient(top, #78a85e 5%, #6acc84 100%);
+        background: linear-gradient(to bottom, #78a85e 5%, #6acc84 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#78a85e', endColorstr='#6acc84',GradientType=0);
+        background-color: #78a85e;
+    }
+
+    .button:active {
+        position: relative;
+        top: 1px;
+    }
+
+#recommendations .tracks-listing {
+    -webkit-border-top-left-radius: 2px;
+    -webkit-border-top-right-radius: 40px;
+    -webkit-border-bottom-right-radius: 40px;
+    -webkit-border-bottom-left-radius: 20px;
+    -moz-border-radius-topleft: 2px;
+    -moz-border-radius-topright: 40px;
+    -moz-border-radius-bottomright: 40px;
+    -moz-border-radius-bottomleft: 20px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 20px;
+    min-width: 500px;
+}
+
+#top-tracks {
+    -webkit-border-top-right-radius: 2px;
+    -webkit-border-top-left-radius: 40px;
+    -webkit-border-bottom-left-radius: 40px;
+    -webkit-border-bottom-right-radius: 20px;
+    -moz-border-radius-topright: 2px;
+    -moz-border-radius-topleft: 40px;
+    -moz-border-radius-bottomleft: 40px;
+    -moz-border-radius-bottomright: 20px;
+    border-top-right-radius: 2px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 20px;
+}
+
+.tracks-listing {
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: 200;
+    background-color: #2e353d;
+    position: relative;
+    width: 400px;
+    height: 90%;
+    color: #e1ffff;
+    float: right;
+    /*position: relative;
+    left: auto;
+    right: 30px;
+    top: 10px;*/
+}
+
+#recommendations {
+    float: left;
+}
+
+.tracks-listing .brand {
+    background-color: #23282e;
+    line-height: 70px;
+    display: block;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+.tracks-listing .toggle-btn {
+    display: none;
+}
+
+.tracks-listing ul,
+.tracks-listing li {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    /*line-height: 35px;*/
+    cursor: pointer;
+    overflow: auto;
+    /*
+    .collapsed{
+       .arrow:before{
+                 font-family: FontAwesome;
+                 content: "\f053";
+                 display: inline-block;
+                 padding-left:10px;
+                 padding-right: 10px;
+                 vertical-align: middle;
+                 float:right;
+            }
+     }
+*/
+}
+
+    .tracks-listing ul :not(collapsed) .arrow:before,
+    .tracks-listing li :not(collapsed) .arrow:before {
+        font-family: FontAwesome;
+        content: "\f078";
+        display: inline-block;
+        padding-left: 10px;
+        padding-right: 10px;
+        vertical-align: middle;
+        float: right;
+    }
+
+    .tracks-listing ul .active,
+    .tracks-listing li .active {
+        border-left: 3px solid #d19b3d;
+        background-color: #4f5b69;
+    }
+
+.tracks-listing li {
+    padding-left: 0px;
+    border-left: 3px solid #2e353d;
+    border-bottom: 1px solid #23282e;
+}
+
+    .tracks-listing li a {
+        text-decoration: none;
+        color: #e1ffff;
+    }
+
+        .tracks-listing li a i {
+            padding-left: 10px;
+            width: 20px;
+            padding-right: 20px;
+        }
+
+    .tracks-listing li:hover {
+        border-left: 3px solid #d19b3d;
+        background-color: #4f5b69;
+        -webkit-transition: all 1s ease;
+        -moz-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        -ms-transition: all 1s ease;
+        transition: all 1s ease;
+    }
+
+@media (max-width: 767px) {
+    .tracks-listing {
+        position: relative;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+        .tracks-listing .toggle-btn {
+            display: block;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            z-index: 10 !important;
+            padding: 3px;
+            background-color: #ffffff;
+            color: #000;
+            width: 40px;
+            text-align: center;
+        }
+
+    .brand {
+        text-align: left !important;
+        font-size: 22px;
+        padding-left: 20px;
+        line-height: 50px !important;
+    }
+}
+
+@media (min-width: 767px) {
+    .tracks-listing .tracks-list .tracks-list-content {
+        display: block;
+    }
+}
+
+.tracks-listing .tracks-list .tracks-list-content img {
+    max-height: 100px;
+    max-width: 100px;
+    float: left;
+    margin: 0px 2px 0px 0px
+}
+
+#form {
+    margin: 5px 0px 5px 0px;
+}
+
+.categories-grid {
+    float: right;
+}
+
+.categories-grid ul{
+    
+}
+
+.categories-grid li {
+    display: inline;
+    list-style: none;
+}
+
+.categories-grid li img {
+    max-height: 100px;
+    max-width: 100px;
+}
+
+#error {
+    color: orangered;
+    visibility:hidden;
+}
+
+.px-0 {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#category-playlists {
+    overflow: auto;
+}

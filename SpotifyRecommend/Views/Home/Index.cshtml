@@ -1,0 +1,61 @@
+﻿@model HomeModel
+@{
+    ViewData["Title"] = "Spotify Reco";
+}
+
+<div class="row">
+    <div class="row">
+        <a href="@Model.UserUrl">@Model.UserName</a>
+    </div>
+
+    @if (!User.Identity.IsAuthenticated)
+    {
+        <div class="row">
+            <div class="col-md-12">
+                <a href="@Url.Action("Login", "Home")" class="logInButton">Logga in med Spotify</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            @Html.Partial("Form",
+                Model.UserPreferences,
+                new ViewDataDictionary(this.ViewData) {
+                    { "AvailableGenres", Model.SpotifyGenres.Genres },//Pass the available genres
+                    { "AvailableCategories", Model.Categories }, //Pass the available cats
+                    { "CategoriesPlaylists", Model.Playlists }
+                }
+                )
+        </div>
+        <div id="recommendations">
+            @Html.Partial("Recommendations", Model.RecommendedTracks)
+        </div>
+        <div class="tracks-listing" id="top-tracks">
+            <div class="brand">Dina top tracks just nu </div>
+            <i class="fa fa-bars fa-2x toggle-btn" data-toggle="collapse" data-target="#tracks-list-content"></i>
+
+            <div class="tracks-list">
+                
+                <ul id="tracks-list-content" class="tracks-list-content collapse out">
+                    @foreach (var track in Model.TopTracks.Tracks.Take(10))
+                    {
+                        string artists = "";
+                        foreach (var artist in track.Artists)
+                        {
+                            artists += artist.Name + ", ";
+                        }
+                        artists = artists.Substring(0, artists.Length - 2);
+
+                        <li>
+                            <a href="#">
+                                <img src="@track.Album.Images.First().Url " alt="@track.Album.Name" /> @artists
+                                <p>@track.Name</p>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>

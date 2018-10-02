@@ -1,0 +1,12 @@
+﻿@model IEnumerable<SpotifyRecommend.SpotifyService.ResponseObjects.Playlist>
+
+@if (Model != null)
+{
+    <label for="SeedPlaylists">Välj din smak</label>
+    <select multiple name="SeedPlaylists" id="SeedPlaylists">
+        @foreach (var playlist in Model)
+        {
+            <option data-img-src="@playlist.Images.First().Url" data-img-label="@playlist.Name" value="@playlist.Id">@playlist.Name</option>
+        }
+    </select>
+}
